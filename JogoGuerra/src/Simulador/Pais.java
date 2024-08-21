@@ -3,7 +3,7 @@ package Simulador;
 public class Pais {
 
     private final String nome;
-    private final int qtdSoldados;
+    private int qtdSoldados;
     private final boolean temArmasNucleares;
     private final double capacidadeEconomica;
     private int credibilidade;
@@ -25,6 +25,10 @@ public class Pais {
         return qtdSoldados;
     }
 
+    public void setQtdSoldados(int qtdSoldados) {
+        this.qtdSoldados = qtdSoldados;
+    }
+
     public boolean isTemArmasNucleares() {
         return temArmasNucleares;
     }
@@ -37,7 +41,7 @@ public class Pais {
         return credibilidade;
     }
 
-    public void setCredibilidade (int credibilidade) {
+    public void setCredibilidade(int credibilidade) {
         this.credibilidade = credibilidade;
     }
 
@@ -53,4 +57,19 @@ public class Pais {
         this.estrategia.agir(this, adversario);        
     }
 
+    public boolean podeUsarBombaNuclear() {
+        return this.temArmasNucleares;
+    }
+
+    public boolean estaDerrubado() {
+        return this.qtdSoldados <= 0 || this.credibilidade <= 0;
+    }
+
+    public void exibirInformacoes() {
+        System.out.println("Nome: " + nome);
+        System.out.println("Quantidade de Soldados: " + qtdSoldados);
+        System.out.println("Tem Armas Nucleares: " + (temArmasNucleares ? "Sim" : "Não"));
+        System.out.println("Capacidade Econômica: " + capacidadeEconomica);
+        System.out.println("Credibilidade: " + credibilidade);
+    }
 }
